@@ -19,6 +19,7 @@ let reducer = (state, action) => {
             case "loadUser" :{
                 const user = action.payload
                 localStorage.setItem("whatsapp-clone-user",JSON.stringify(user))
+                return {...state,user: user}
             }
             
     

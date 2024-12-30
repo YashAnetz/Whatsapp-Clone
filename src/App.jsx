@@ -7,7 +7,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
-  setupIonicReact
+  setupIonicReact,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
@@ -15,6 +15,7 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import './App.css'
+import {AppContext} from './state';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -45,12 +46,19 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { useContext } from 'react';
+import Login from './pages/Login';
 
 setupIonicReact();
 
-const App = () => (
-  <IonApp>
-    <IonReactRouter>
+const App = () =>{  
+
+  const{state,dispatch} = useContext(AppContext)
+  
+  return (
+  <IonApp>{
+    state.user ? 
+    (<IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/tab1">
@@ -81,8 +89,8 @@ const App = () => (
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+    </IonReactRouter>):<Login></Login>}
+  </IonApp>)}
+
 
 export default App;
