@@ -6,7 +6,10 @@ let AppContext = createContext({})
 const initialState = 
 {
      appName: "WhatsApp",
-     user: JSON.parse(localStorage.getItem("whatsapp-clone-user"))
+     user: JSON.parse(localStorage.getItem("whatsapp-clone-user")),
+     noTabs: false,
+     chattingWith: {}
+
 }
 
 let reducer = (state, action) => {
@@ -20,6 +23,14 @@ let reducer = (state, action) => {
                 const user = action.payload
                 localStorage.setItem("whatsapp-clone-user",JSON.stringify(user))
                 return {...state,user: user}
+            }
+
+            case "setNoTabs" : {
+                return {...state, noTabs:action.payload}
+            }
+
+            case "setChattingWith" : {
+                return {...state, chattingWith:action.payload}
             }
             
     

@@ -14,6 +14,7 @@ import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
+import ChatPage from './pages/ChatPage';
 import './App.css'
 import {AppContext} from './state';
 
@@ -70,11 +71,16 @@ const App = () =>{
           <Route path="/tab3">
             <Tab3 />
           </Route>
+          <Route path="/chatPage">
+            <ChatPage />
+          </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
         </IonRouterOutlet>
-        <IonTabBar className='menu-bar' slot="bottom">
+        {state.noTabs? (<IonTabBar slot="hidden"></IonTabBar>) : 
+
+        (<IonTabBar className='menu-bar' slot="bottom">
           <IonTabButton tab="tab1" href="/tab1" className='tabButton'>
             {/* <IonIcon aria-hidden="true" icon={triangle} /> */}
             <IonLabel>Chats</IonLabel>
@@ -87,7 +93,9 @@ const App = () =>{
             {/* <IonIcon aria-hidden="true" icon={square} /> */}
             <IonLabel>Calls</IonLabel>
           </IonTabButton>
-        </IonTabBar>
+        </IonTabBar>)}
+
+        
       </IonTabs>
     </IonReactRouter>):<Login></Login>}
   </IonApp>)}

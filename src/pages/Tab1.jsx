@@ -1,6 +1,6 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonList, IonAvatar, IonItem, IonLabel } from '@ionic/react';
+import ChatItem from '../components/chatItem';
+import '../App.css';
 import { AppContext } from '../state';
 import { useContext } from 'react';
 
@@ -12,11 +12,10 @@ const Tab1 = () => {
   
   return (
     <IonPage>
-      <IonContent fullscreen>
-        Tab1 
-    
-       
-       
+      <IonContent className='chat-screen' fullscreen>
+        <IonList>
+          {state.user.contacts.map((contact) => <ChatItem contact ={contact} key={contact.user_id}></ChatItem>)}
+        </IonList> 
       </IonContent>
     </IonPage>
   );

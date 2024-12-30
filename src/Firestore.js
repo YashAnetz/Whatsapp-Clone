@@ -1,7 +1,7 @@
-// Firestore.js
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBFpHZl0tdYxfdpicAtiTM2X4HvyoxD1iU",
   authDomain: "whatsapp-clone-fb6e9.firebaseapp.com",
@@ -11,6 +11,7 @@ const firebaseConfig = {
   appId: "1:1091022412739:web:df992e76106669862abb76",
 };
 
+// Initialize Firebase and Firestore
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
