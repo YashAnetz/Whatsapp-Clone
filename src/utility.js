@@ -5,7 +5,9 @@ function getToday() {
 }
 
 const Utility = {
-    getToday
+    getToday,
+    genRandom,
+    getTime
 };
 
 function genRandom(length = 7) {
@@ -15,6 +17,21 @@ function genRandom(length = 7) {
       result += chars[Math.round(Math.random() * (chars.length - 1))];
     return result;
   }
+
+  function getTime(unix_timestamp) {
+    // Use the timestamp as-is if it's already in milliseconds
+    let date = new Date(unix_timestamp);
+  
+    // Get hours and minutes
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+  
+    // Format time as HH:mm
+    let formattedTime = hours + ':' + minutes.substr(-2);
+  
+    return formattedTime;
+  }
+  
   
 
 // Export the Utility object
